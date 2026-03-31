@@ -1,10 +1,10 @@
 import express from 'express';
 import * as deviceController from '../controllers/deviceController.js';
-import { verifyToken } from '../middleware/auth.js';
+import { verifyToken } from '../middleware/auth.js';  // ← IMPORT INI
 
 const router = express.Router();
 
-// Semua routes memerlukan token
+// HARUS ADA verifyToken!
 router.get('/', verifyToken, deviceController.getAllDevices);
 router.get('/:device_id', verifyToken, deviceController.getDevice);
 router.post('/register', verifyToken, deviceController.registerDevice);
